@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App-Container">
       <h1 style={{ backgroundColor: "orange" }}>MERN Frontend</h1>
-      <Home />
+      <Home age={21} />
       <h3>This is footer</h3>
     </div>
   );
