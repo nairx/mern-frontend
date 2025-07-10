@@ -7,7 +7,8 @@ export default function Register() {
   const [error, setError] = useState();
   const handleSubmit = async () => {
     try {
-      const url = "http://localhost:8080/api/users/register";
+      //const url = "http://localhost:8080/api/users/register";
+      const url = "https://mern-backend-pi-plum.vercel.app/api/users/register"
       const result = await axios.post(url, user);
       setError("Data saved successfully");
     } catch (err) {
