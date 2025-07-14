@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App-Container">
       <BrowserRouter>
-        <h1 style={{ backgroundColor: "orange" }}>MERN Frontend</h1>
+        <h1>MERN Frontend</h1>
         <Link to="/">Home</Link>-<Link to="/cart">MyCart</Link>-
         <Link to="/order">MyOrder</Link>-<Link to="/admin">Admin</Link>-
         <Link to="/login">Login</Link>
