@@ -84,6 +84,11 @@ export default function Users() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const frm = frmRef.current;
+    if (!frm.checkValidity()) {
+      frm.reportValidity();
+      return;
+    }
     try {
       const url = `${API_URL}/api/users/${editId}`;
       const result = await axios.patch(url, form);
