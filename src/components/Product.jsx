@@ -21,9 +21,11 @@ export default function Product() {
   }, []);
 
   const addToCart = (product) => {
-    product.qty = 1
-    setCart([...cart, product]);
-    console.log(cart)
+    const found = cart.find((item) => item._id === product._id);
+    if (!found) {
+      product.qty = 1;
+      setCart([...cart, product]);
+    }
   };
   return (
     <div>
