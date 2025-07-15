@@ -140,7 +140,7 @@ export default function Products() {
             name="price"
             value={form.price}
             type="text"
-            placeholder="Price Address"
+            placeholder="Price"
             onChange={handleChange}
             required
           />
