@@ -9,6 +9,7 @@ import Admin from "./components/Admin";
 import Users from "./components/Users";
 import Orders from "./components/Orders";
 import Header from "./components/Header";
+import Profile from "./components/Profile";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Products from "./components/Products";
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route index element={<Product />} />
             <Route path="login" element={<Login />} />
+             <Route path="profile" element={<Profile />} />
             <Route path="register" element={<Register />} />
             <Route path="cart" element={<Cart />} />
             <Route path="order" element={<Order />} />
