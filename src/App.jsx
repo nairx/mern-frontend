@@ -8,6 +8,8 @@ import Order from "./components/Order";
 import Admin from "./components/Admin";
 import Users from "./components/Users";
 import Orders from "./components/Orders";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Products from "./components/Products";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
@@ -16,10 +18,7 @@ function App() {
   return (
     <div className="App-Container">
       <BrowserRouter>
-        <h1>MERN Frontend</h1>
-        <Link to="/">Home</Link>-<Link to="/cart">MyCart</Link>-
-        <Link to="/order">MyOrder</Link>-<Link to="/admin">Admin</Link>-
-        <Link to="/login">Login</Link>
+       <Header/>
         <Routes>
           <Route index element={<Product />} />
           <Route path="login" element={<Login />} />
@@ -32,7 +31,7 @@ function App() {
             <Route path="orders" element={<Orders />} />
           </Route>
         </Routes>
-        <h3>This is footer</h3>
+       <Footer/>
       </BrowserRouter>
     </div>
   );
