@@ -9,7 +9,7 @@ export default function Orders() {
   const [page, setPage] = useState(1);
   const [limit,setLimit]= useState(3)
   const [totalPages, setTotalPages] = useState(1);
-  const [status, setStatus] = useState("Pending");
+  const [status, setStatus] = useState("");
   const { user } = useContext(AppContext);
   const API_URL = import.meta.env.VITE_API_URL;
   const fetchOrders = async () => {
@@ -29,7 +29,7 @@ export default function Orders() {
   };
   useEffect(() => {
     fetchOrders();
-  }, [status]);
+  }, [status,page]);
   const updateOrder = async (status, id) => {
     try {
       const url = `${API_URL}/api/orders/${id}`;
@@ -44,7 +44,7 @@ export default function Orders() {
     <div>
       <h2>Order Management</h2>
       <div>
-        <select defaultValue="Pending" onChange={(e) => setStatus(e.target.value)}>
+        <select onChange={(e) => setStatus(e.target.value)}>
           <option value="">All</option>
           <option value="Pending" >
             Pending
@@ -71,6 +71,18 @@ export default function Orders() {
             )}
           </li>
         ))}
+        <div>
+        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+          Previous
+        </button>
+        Page {page} of {totalPages}
+        <button
+          disabled={page === totalPages}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
