@@ -7,7 +7,7 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState();
   const [page, setPage] = useState(1);
-  const [limit,setLimit]= useState(3)
+  const [limit, setLimit] = useState(3);
   const [totalPages, setTotalPages] = useState(1);
   const [status, setStatus] = useState("");
   const { user } = useContext(AppContext);
@@ -29,7 +29,7 @@ export default function Orders() {
   };
   useEffect(() => {
     fetchOrders();
-  }, [status,page]);
+  }, [status, page]);
   const updateOrder = async (status, id) => {
     try {
       const url = `${API_URL}/api/orders/${id}`;
@@ -46,9 +46,7 @@ export default function Orders() {
       <div>
         <select onChange={(e) => setStatus(e.target.value)}>
           <option value="">All</option>
-          <option value="Pending" >
-            Pending
-          </option>
+          <option value="Pending">Pending</option>
           <option value="completed">Completed</option>
           <option value="cancelled">Cancelled</option>
         </select>
@@ -56,7 +54,7 @@ export default function Orders() {
       </div>
       {orders &&
         orders.map((order) => (
-          <li>
+          <div key={order._id}>
             {order._id}-{order.orderValue}-{order.status}-
             {order.status === "Pending" && (
               <>
@@ -69,9 +67,9 @@ export default function Orders() {
                 </button>
               </>
             )}
-          </li>
+          </div>
         ))}
-        <div>
+      <div>
         <button disabled={page === 1} onClick={() => setPage(page - 1)}>
           Previous
         </button>

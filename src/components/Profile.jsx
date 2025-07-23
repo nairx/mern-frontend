@@ -34,7 +34,7 @@ export default function Profile() {
   };
   const handleSubmit = async () => {
     try {
-      const url = `${API_URL}/api/users/${profile._id}/profile`;
+      const url = `${API_URL}/api/users/${profile.id}/profile`;
       const result = await axios.patch(url, form);
       fetchProfile();
       setError("Data saved successfully.");
