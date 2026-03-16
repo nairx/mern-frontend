@@ -1,21 +1,31 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Register from "./components/Register";
+import Cart from "./components/Cart";
+import Orders from "./components/Orders";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
+export const AppContext = createContext();
 function App() {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:8080/api/products");
-    setProducts(res.data);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const [user, setUser] = useState({});
   return (
-    <div>
-      {products.map((product) => (
-        <li>{product.name}</li>
-      ))}
-    </div>
+    <AppContext.Provider value={{ user, setUser }}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route index element={<Content />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="logout" element={<Logout />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 export default App;
