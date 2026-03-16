@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../App";
 import axios from "axios";
-import "./Content.css"
+import "./Content.css";
 function Content() {
   const [products, setProducts] = useState([]);
+  const { cart, setCart } = useContext(AppContext);
   const API_URL = import.meta.env.VITE_API_URL;
   const fetchProducts = async () => {
     const url = `${API_URL}/products`;
@@ -13,20 +15,24 @@ function Content() {
     fetchProducts();
   }, []);
 
+  const addToCart = (product) => {
+    const found = cart.find((item) => item._id === product._id);
+    if(!found){
+      product.quantity = 1
+      setCart([...cart,product])
+    }
+  };
+
   return (
     <div className="row">
       {products &&
         products.map((product) => (
           <div class="box" key={product._id}>
-            <img
-              src={`${API_URL}${product.imageUrl}`}
-              width={300}
-              alt=""
-            />
+            <img src={`${API_URL}${product.imageUrl}`} width={300} alt="" />
             <h3>{product.name}</h3>
             <p>{product.desc}</p>
             <h4>{product.price}</h4>
-            <button>Add to Cart</button>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </div>
         ))}
     </div>
