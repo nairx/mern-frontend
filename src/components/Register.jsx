@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./Register.css"
 export default function Register() {
   const [obj, setObj] = useState({});
   const API_URL = import.meta.env.VITE_API_URL;
@@ -13,7 +14,7 @@ export default function Register() {
     Navigate("/login");
   };
   return (
-    <div>
+    <div className="App-Register-Form">
       <h3>Register</h3>
       <p>
         <input
