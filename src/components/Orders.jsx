@@ -33,6 +33,7 @@ export default function Orders() {
                 ))}
               </ol>
               <h4>Order Value:{order.orderValue}</h4>
+              <h3>Status:{order.status}</h3>
               <hr />
             </div>
           ))}
