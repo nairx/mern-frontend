@@ -14,6 +14,9 @@ function Header() {
         <li>
           <Link to="/cart">Cart</Link>
         </li>
+        <li>
+          <Link to="/app1">App1</Link>
+        </li>
         {user?.email ? (
           <>
             <li>
