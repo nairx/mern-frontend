@@ -17,10 +17,34 @@ function Content() {
 
   const addToCart = (product) => {
     const found = cart.find((item) => item._id === product._id);
-    if(!found){
-      product.quantity = 1
-      setCart([...cart,product])
+    if (!found) {
+      product.quantity = 1;
+      setCart([...cart, product]);
     }
+  };
+
+  const increment = (id) => {
+    setCart(
+      cart.map((item) => {
+        if (item._id === id) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      }),
+    );
+  };
+
+  const decrement = (id) => {
+    setCart(
+      cart.map((item) => {
+        if (item._id === id && item.quantity > 0) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else {
+          return item;
+        }
+      }),
+    );
   };
 
   return (
@@ -32,7 +56,16 @@ function Content() {
             <h3>{product.name}</h3>
             <p>{product.desc}</p>
             <h4>{product.price}</h4>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+
+            {cart.find((item) => item._id === product._id) ? (
+              <>
+                <button onClick={()=>decrement(product._id)}>-</button>
+                {10}
+                <button onClick={()=>increment(product._id)}>+</button>
+              </>
+            ) : (
+              <button onClick={() => addToCart(product)}>Add to Cart</button>
+            )}
           </div>
         ))}
     </div>
