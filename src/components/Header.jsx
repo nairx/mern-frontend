@@ -29,6 +29,12 @@ function Header() {
         <li>
           <Link to="/app5">App5</Link>
         </li>
+        <li>
+          <Link to="/app6">App6</Link>
+        </li>
+        <li>
+          <Link to="/app7">App7</Link>
+        </li>
         {user?.email ? (
           <>
             <li>
