@@ -23,13 +23,15 @@ export default function Cart() {
 
   const decrement = (id) => {
     setCart(
-      cart.map((item) => {
-        if (item._id === id && item.quantity > 0) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
-          return item;
-        }
-      }),
+      cart
+        .map((item) => {
+          if (item._id === id && item.quantity > 0) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        })
+        .filter((item) => item.quantity > 0),
     );
   };
 

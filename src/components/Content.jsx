@@ -44,13 +44,15 @@ function Content() {
 
   const decrement = (id) => {
     setCart(
-      cart.map((item) => {
-        if (item._id === id && item.quantity > 0) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
-          return item;
-        }
-      }),
+      cart
+        .map((item) => {
+          if (item._id === id && item.quantity > 0) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        })
+        .filter((item) => item.quantity > 0),
     );
   };
 
@@ -58,7 +60,7 @@ function Content() {
     <div className="row">
       {products &&
         products.map((product) => (
-          <div class="box" key={product._id}>
+          <div className="box" key={product._id}>
             <img src={`${API_URL}${product.imageUrl}`} width={300} alt="" />
             <h3>{product.name}</h3>
             <p>{product.desc}</p>
