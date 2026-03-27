@@ -1,6 +1,7 @@
 import React from "react";
-
-export default function Child() {
-  console.log("Child Component Loaded");
+function Child({flag}) {
+  console.log("Child called")
   return <div>This is Child Component</div>;
 }
+
+export default React.memo(Child);
