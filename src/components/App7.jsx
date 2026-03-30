@@ -7,8 +7,8 @@ export default function App7() {
   return (
     <div>
       <h3>This is App7 Component</h3>
-      <button onClick={() => setCounter(counter + 1)}>Update</button>
-      <button onClick={() => setFlag(flag + 1)}>Update</button>
+      <button onClick={() => setCounter(counter + 1)}>Update Counter</button>
+      <button onClick={() => setFlag(flag + 1)}>Update Flag</button>
       <p>Counter:{counter}</p>
       <p>Flag:{flag}</p>
       <Child flag={flag} />
